@@ -1,10 +1,163 @@
 ---
+import { Image } from "astro:assets";
 import Greeting from "../components/Greeting";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import heroImage from "../../public/bgGrid.svg";
+import starsIcon from "../../public/stars.svg";
+import Ellipse1Icon from "../../public/Ellipse1.svg";
+import Ellipse2Icon from "../../public/Ellipse2.svg";
+import Ellipse3Icon from "../../public/Ellipse3.svg";
 const pageTitle = "Home";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <div class="heroSection">
+    <div class="heroContent">
+      <h1>I design and build clean websites</h1>
+      <p>
+        Write anything here something about yourself to showcase what actually
+        you doing or targeting etc.
+      </p>
+      <button class="gradient-border-mask">Get In Touch</button>
+    </div>
+    <Image src={heroImage} alt="hero image" class="heroImage" />
+  </div>
+  <div class="process">
+    <h2>
+      <span>My process to design</span>
+      <Image src={starsIcon} alt="stars" class="" />
+    </h2>
+    <div class="processGrid">
+      <div class="processNum"><span>1</span><div class="line"></div></div>
+      <div class="processContent">
+        <Image src={Ellipse1Icon} alt="ellipse 1" class="" />
+        <h3>Step 1: Product design Research</h3>
+        <p>
+          This initial step involves a systematic and thorough exploration of
+          the market landscape, user needs, and existing solutions.
+        </p>
+        <button>See Examples</button>
+      </div>
+      <div class="processNum"><span>2</span><div class="line"></div></div>
+      <div class="processContent">
+        <Image src={Ellipse2Icon} alt="ellipse 2" class="" />
+        <h3>Step 2: UI design in figma</h3>
+        <p>
+          This initial step involves a systematic and thorough exploration of
+          the market landscape, user needs, and existing solutions.
+        </p>
+        <button>See Examples</button>
+      </div>
+      <div class="processNum"><span>3</span></div>
+      <div class="processContent">
+        <Image src={Ellipse3Icon} alt="ellipse 3" class="" />
+        <h3>Step 3: No-code develop in webflow</h3>
+        <p>
+          TThis initial step involves a systematic and thorough exploration of
+          the market landscape, user needs, and existing solutions.
+        </p>
+        <button>See Examples</button>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  .heroSection {
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .heroImage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    z-index: 0;
+  }
+  .heroContent {
+    background-color: #101111;
+    z-index: 10;
+  }
+
+  button {
+    background: linear-gradient(140deg, #7a87fb, #ffd49c) border-box;
+    color: #1c1c1c;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+  .gradient-border-mask {
+    position: relative;
+
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+  }
+
+  .gradient-border-mask::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 218.97px;
+    border: 1.13px solid transparent;
+    background: linear-gradient(140deg, #ffd49c, #7a87fb) border-box;
+    mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  .process h2 {
+    margin: 4rem 0;
+  }
+
+  .processGrid {
+    display: grid;
+    grid-template-columns: 2fr 12fr;
+    gap: 0 1rem;
+  }
+  .processNum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .line {
+    width: 1px;
+    height: calc(100% - 60px);
+    background: #444444;
+  }
+  .processNum span {
+    border: 1px solid #fff;
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .processContent button {
+    background: #111;
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+  .processContent h3 {
+    margin-bottom: 0rem;
+    margin-top: 0;
+  }
+  .processContent p {
+    margin-top: 0.5rem;
+  }
+</style>

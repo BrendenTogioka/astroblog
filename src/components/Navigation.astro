@@ -2,9 +2,46 @@
 
 ---
 
-<div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Tags</a>
+<div transition:animate="slide" class="nav-links">
+  <div>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+  </div>
 </div>
+
+<style>
+  .nav-links {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(140deg, #7a87fb, #101111);
+    display: none;
+    margin: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background-color: #7a87fb;
+  }
+
+  .expanded {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

@@ -1,14 +1,60 @@
 ---
 import Navigation from "./Navigation.astro";
 import Hamburger from "./Hamburger.astro";
+import { Image } from "astro:assets";
+import logoImage from "../../public/logo.svg";
+import hamburgerIcon from "../../public/hamburgermenu.svg";
 import "../styles/global.css";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
 
 <header>
   <nav>
-    <Hamburger />
-    <ThemeIcon />
+    <Image src={logoImage} alt="Brenden Togioka Logo" />
     <Navigation />
+    <div class="hamburger gradient-border-mask">
+      <Image src={hamburgerIcon} alt="hamburger icon" class="hamburgerIcon" />
+    </div>
+
+    <!-- <ThemeIcon /> -->
   </nav>
 </header>
+
+<style>
+  header {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    z-index: 100;
+  }
+
+  .gradient-border-mask {
+    position: relative;
+    padding: 4px 16px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    background: #1c1c1c;
+    border-radius: 218.97px;
+  }
+
+  .gradient-border-mask::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 218.97px;
+    border: 1.13px solid transparent;
+    background: linear-gradient(140deg, #7a87fb, #ffd49c) border-box;
+    mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+</style>
